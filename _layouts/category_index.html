@@ -6,14 +6,9 @@ layout: default
 <ul class="posts">
 
 {% if page.title == 'Categories:' %}
-	{% capture categories %}
-		{% for cat in site.categories %}
-			{{ cat | first }}
-		{% endfor %}
-	{% endcapture %}
-	{% assign sortedcategories = categories | split:' ' | sort %}
-	{% for category in sortedcategories %}
-		<h2><a href="{{ page.url | prepend: base_url | replace: "/index.html", "" }}/{{ category }}/">{{ category }}</a></h2>
+	{% include taxonomy_sort.html source=site.categories %}
+	{% for taxonomy in sortedtaxonomies %}
+		<h2><a href="{{ page.url | prepend: base_url | replace: "/index.html", "" }}/{{ taxonomy }}/">{{ taxonomy }}</a></h2>
 	{% endfor %}
 {% else %}
 	{% assign catpages = site.categories[page.category] | sort: 'date' %}
