@@ -6,10 +6,15 @@ layout: default
 <ul class="posts">
 
 {% if page.title == 'Categories:' %}
-	{% for category in site.categories %}
-		<h2><a href="{{ page.url | prepend: base_url | replace: "/index.html", "" }}/{{ category | first }}/">{{ category | first }}</a></h2>
+	{% capture categories %}
+		{% for cat in site.categories %}
+			{{ cat | first }}
+		{% endfor %}
+	{% endcapture %}
+	{% assign sortedcategories = categories | split:' ' | sort %}
+	{% for category in sortedcategories %}
+		<h2><a href="{{ page.url | prepend: base_url | replace: "/index.html", "" }}/{{ category }}/">{{ category }}</a></h2>
 	{% endfor %}
-
 {% else %}
 	{% assign catpages = site.categories[page.category] | sort: 'date' %}
 	{% for post in catpages %}
