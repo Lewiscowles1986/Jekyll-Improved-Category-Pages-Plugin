@@ -1,0 +1,6 @@
+{% capture taxonomiesjoin %}
+	{% for cat in include.source %}
+		{{ cat | first }}
+	{% endfor %}
+{% endcapture %}
+{% assign sortedtaxonomies = taxonomiesjoin | split:' ' | sort %}
