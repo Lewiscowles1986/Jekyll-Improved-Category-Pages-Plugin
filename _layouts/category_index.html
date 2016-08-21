@@ -2,6 +2,9 @@
 layout: default
 ---
 
+<h1 class="category">{{ page.title }} <a href="javascript:window.history.back();">&laquo;</a></h1>
+<ul class="posts">
+
 {% if page.category_root %}
 	{% include taxonomy_sort.html source=site.categories %}
 	{% for taxonomy in sortedtaxonomies %}
