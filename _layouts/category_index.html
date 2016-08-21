@@ -2,13 +2,10 @@
 layout: default
 ---
 
-<h1 class="category">{{ page.title }} <a href="javascript:window.history.back();">&laquo;</a></h1>
-<ul class="posts">
-
-{% if page.title == 'Categories:' %}
+{% if page.category_root %}
 	{% include taxonomy_sort.html source=site.categories %}
 	{% for taxonomy in sortedtaxonomies %}
-		<h2><a href="{{ page.url | prepend: base_url | replace: "/index.html", "" }}/{{ taxonomy }}/">{{ taxonomy }}</a></h2>
+		<h2><a href="{{ page.url | prepend: base_url | replace: "/index.html", "" }}{{ taxonomy }}/">{{ taxonomy }}</a></h2>
 	{% endfor %}
 {% else %}
 	{% assign catpages = site.categories[page.category] | sort: 'date' %}

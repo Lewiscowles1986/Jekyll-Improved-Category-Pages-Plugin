@@ -16,8 +16,10 @@ module Jekyll
         self.data['category'] = category
         category_title_prefix = site.config['category_title_prefix'] || 'Category: '
         self.data['title'] = "#{category_title_prefix}#{category}"
+        self.data['category_root'] = false # juzraai
       else
         self.data['title'] = 'Categories:'
+        self.data['category_root'] = true # juzraai
       end
 
     end
